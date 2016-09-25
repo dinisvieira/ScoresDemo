@@ -1,5 +1,6 @@
 ﻿using System;
-
+using System.Collections.ObjectModel;
+using System.Linq;
 using Android.App;
 using Android.Content;
 using Android.Runtime;
@@ -12,11 +13,13 @@ namespace ScoresDemo.Droid
 	[Activity (Label = "ScoresDemo.Droid", MainLauncher = true, Icon = "@drawable/icon")]
 	public class MainActivity : Activity
 	{
-		int count = 1;
 
-		protected override void OnCreate (Bundle bundle)
+		protected override async void OnCreate (Bundle bundle)
 		{
-			base.OnCreate (bundle);
+
+            XamSvg.Setup.InitSvgLib();
+
+            base.OnCreate (bundle);
 
 			// Set our view from the "main" layout resource
 			SetContentView (Resource.Layout.Main);
@@ -24,16 +27,28 @@ namespace ScoresDemo.Droid
 			// Get our button from the layout resource,
 			// and attach an event to it
 			Button button = FindViewById<Button> (Resource.Id.fetchMatchesButton);
-            EditText editText = FindViewById<EditText>(Resource.Id.numberDaysEditText);
+            ListView listView = FindViewById<ListView>(Resource.Id.matchesListView);
+
+            //Calls the Shared Portable Class Library to get a list with all available meme's.
+            ObservableCollection<Competition> competitions = await ScoresSource.GetCompetitions();
+
+            Spinner competitionsSpinner = FindViewById<Spinner>(Resource.Id.competitionsSpinner);
+
+            var orderedCompetitionsArray = competitions.OrderBy(m => m.Id).ToArray();
+
+            //Set the list of memes to our Spinner and enable it
+            var adapter = new CompetitionsAdapter(this, orderedCompetitionsArray);
+            competitionsSpinner.Adapter = adapter;
 
             button.Click += async (sender, args) =>
             {
-                int numberDays = 5;
-                int.TryParse(editText.Text, out numberDays);
-
-			    var matches = await ScoresSource.GetLastMatches(numberDays);
+			    var matches = await ScoresSource.GetLastCompetitionMatches(competitionsSpinner.SelectedItemId.ToString());
                 System.Diagnostics.Debug.WriteLine(matches.Count);
-			};
+
+                var orderedMatchesArray = matches.OrderByDescending(m => m.StartTime).ToArray();
+                
+                listView.Adapter = new MatchesAdapter(this, orderedMatchesArray);
+            };
 		}
 	}
 }

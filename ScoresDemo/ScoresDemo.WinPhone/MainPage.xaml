@@ -8,7 +8,48 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-        <Button Content="Hello World, Click Me!" x:Name="Button" />
-    </StackPanel>
+    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <ComboBox Grid.Row="0" x:Name="CompetitionsComboBox">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Name}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Button Grid.Row="1" x:Name="FetchMatchesButton" Content="Fetch Matches" />
+        <ListView Grid.Row="2" x:Name="MatchesListView" HorizontalAlignment="Stretch">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical" Margin="5">
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="{Binding HomeName}" FontSize="16"/>
+                            <TextBlock Grid.Column="1" Text="{Binding HomeGoals}" FontSize="16"/>
+                            <TextBlock Grid.Column="2" Text=":" FontSize="16" Margin="5,0,5,0"/>
+                            <TextBlock Grid.Column="3" Text="{Binding AwayGoals}" FontSize="16"/>
+                            <TextBlock Grid.Column="4" Text="{Binding AwayName}" FontSize="16" TextAlignment="Right" />
+                        </Grid>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+    </Grid>
 </Page>

@@ -3,25 +3,10 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
-    <LinearLayout
-        android:orientation="horizontal"
+    <Spinner
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearLayout">
-        <TextView
-            android:text="Number of days to fetch: "
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical" />
-        <EditText
-            android:inputType="number"
-            android:id="@+id/numberDaysEditText"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-    </LinearLayout>
+        android:layout_height="40dip"
+        android:id="@+id/competitionsSpinner" />
     <Button
         android:id="@+id/fetchMatchesButton"
         android:layout_width="match_parent"

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -36,19 +37,26 @@ namespace ScoresDemo.WinPhone
         /// </summary>
         /// <param name="e">Event data that describes how this page was reached.
         /// This parameter is typically used to configure the page.</param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            // TODO: Prepare page for display here.
+            //Calls the Shared Portable Class Library to get a list with all available meme's.
+            ObservableCollection<Competition> competitions = await ScoresSource.GetCompetitions();
 
-            // TODO: If your application contains multiple pages, ensure that you are
-            // handling the hardware Back button by registering for the
-            // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
-            // If you are using the NavigationHelper provided by some templates,
-            // this event is handled for you.
-            Button.Click += delegate
+            var orderedCompetitions = competitions.OrderBy(m => m.Id);
+
+            CompetitionsComboBox.ItemsSource = orderedCompetitions;
+
+            FetchMatchesButton.Tapped += async (sender, args) =>
             {
-                var title = string.Format("{0} clicks!", count++);
-                Button.Content = title;
+
+                var selComp = CompetitionsComboBox.SelectedValue as Competition;
+
+                var matches = await ScoresSource.GetLastCompetitionMatches(selComp.Id.ToString());
+                System.Diagnostics.Debug.WriteLine(matches.Count);
+
+                var orderedMatches = matches.OrderByDescending(m => m.StartTime);
+
+                MatchesListView.ItemsSource = orderedMatches;
             };
         }
     }

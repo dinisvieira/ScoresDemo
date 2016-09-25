@@ -26,10 +26,31 @@ namespace ScoresDemo.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::XamSvg.Resource.Attribute.colorMapping = global::ScoresDemo.Droid.Resource.Attribute.colorMapping;
+			global::XamSvg.Resource.Attribute.colorMappingSelected = global::ScoresDemo.Droid.Resource.Attribute.colorMappingSelected;
+			global::XamSvg.Resource.Attribute.svg = global::ScoresDemo.Droid.Resource.Attribute.svg;
+			global::XamSvg.Resource.Attribute.useCache = global::ScoresDemo.Droid.Resource.Attribute.useCache;
+			global::XamSvg.Resource.Styleable.SvgImageView = global::ScoresDemo.Droid.Resource.Styleable.SvgImageView;
+			global::XamSvg.Resource.Styleable.SvgImageView_colorMapping = global::ScoresDemo.Droid.Resource.Styleable.SvgImageView_colorMapping;
+			global::XamSvg.Resource.Styleable.SvgImageView_colorMappingSelected = global::ScoresDemo.Droid.Resource.Styleable.SvgImageView_colorMappingSelected;
+			global::XamSvg.Resource.Styleable.SvgImageView_svg = global::ScoresDemo.Droid.Resource.Styleable.SvgImageView_svg;
+			global::XamSvg.Resource.Styleable.SvgImageView_useCache = global::ScoresDemo.Droid.Resource.Styleable.SvgImageView_useCache;
 		}
 		
 		public partial class Attribute
 		{
+			
+			// aapt resource value: 0x7f010001
+			public const int colorMapping = 2130771969;
+			
+			// aapt resource value: 0x7f010002
+			public const int colorMappingSelected = 2130771970;
+			
+			// aapt resource value: 0x7f010000
+			public const int svg = 2130771968;
+			
+			// aapt resource value: 0x7f010003
+			public const int useCache = 2130771971;
 			
 			static Attribute()
 			{
@@ -60,20 +81,47 @@ namespace ScoresDemo.Droid
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f050006
+			public const int Text = 2131034118;
+			
+			// aapt resource value: 0x7f05000a
+			public const int awayGoals = 2131034122;
+			
+			// aapt resource value: 0x7f05000c
+			public const int awayImage = 2131034124;
+			
+			// aapt resource value: 0x7f05000b
+			public const int awayName = 2131034123;
+			
+			// aapt resource value: 0x7f050002
+			public const int competitionsSpinner = 2131034114;
+			
+			// aapt resource value: 0x7f050005
+			public const int date = 2131034117;
+			
 			// aapt resource value: 0x7f050003
 			public const int fetchMatchesButton = 2131034115;
 			
+			// aapt resource value: 0x7f050009
+			public const int homeGoals = 2131034121;
+			
+			// aapt resource value: 0x7f050007
+			public const int homeImage = 2131034119;
+			
+			// aapt resource value: 0x7f050008
+			public const int homeName = 2131034120;
+			
 			// aapt resource value: 0x7f050000
-			public const int linearLayout = 2131034112;
+			public const int image = 2131034112;
 			
 			// aapt resource value: 0x7f050004
 			public const int matchesListView = 2131034116;
 			
-			// aapt resource value: 0x7f050002
-			public const int numberDaysEditText = 2131034114;
-			
 			// aapt resource value: 0x7f050001
-			public const int textView = 2131034113;
+			public const int text = 2131034113;
+			
+			// aapt resource value: 0x7f05000d
+			public const int venueName = 2131034125;
 			
 			static Id()
 			{
@@ -89,7 +137,13 @@ namespace ScoresDemo.Droid
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int Main = 2130903040;
+			public const int CompetitionSpinnerItem = 2130903040;
+			
+			// aapt resource value: 0x7f030001
+			public const int Main = 2130903041;
+			
+			// aapt resource value: 0x7f030002
+			public const int MatchListItem = 2130903042;
 			
 			static Layout()
 			{
@@ -116,6 +170,37 @@ namespace ScoresDemo.Droid
 			}
 			
 			private String()
+			{
+			}
+		}
+		
+		public partial class Styleable
+		{
+			
+			public static int[] SvgImageView = new int[] {
+					2130771968,
+					2130771969,
+					2130771970,
+					2130771971};
+			
+			// aapt resource value: 1
+			public const int SvgImageView_colorMapping = 1;
+			
+			// aapt resource value: 2
+			public const int SvgImageView_colorMappingSelected = 2;
+			
+			// aapt resource value: 0
+			public const int SvgImageView_svg = 0;
+			
+			// aapt resource value: 3
+			public const int SvgImageView_useCache = 3;
+			
+			static Styleable()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Styleable()
 			{
 			}
 		}

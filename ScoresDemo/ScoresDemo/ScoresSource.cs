@@ -18,7 +18,7 @@ namespace ScoresDemo
         private static string endpoint = "https://api.crowdscores.com/api/v1";
         private static string lastMatches = "/matches?competition_id=2";
 
-        public static async Task<ObservableCollection<Match>>  GetLastMatches(int numberOfDays)
+        public static async Task<ObservableCollection<Match>>  GetLastCompetitionMatches(string competitionId)
         {
             var client = new HttpClient();
 
@@ -26,10 +26,9 @@ namespace ScoresDemo
             client.DefaultRequestHeaders.Add("x-crowdscores-api-key", "91e57182c3954dc68a2e184c30271b4a");
 
             //number of days to fetch
-            var daysToFetch = DateTime.Now.AddDays(-1*numberOfDays);
-            Debug.WriteLine(daysToFetch.ToString("yyyy-MM-ddThh:mm:ss"));
-            //lastMatches += "&from=2016-09-10T12:00:00-03:00";
-            var requestUri = endpoint + lastMatches + "&from=" + daysToFetch.ToString("yyyy-MM-ddThh:mm:ss");
+            var daysToFetch = DateTime.Now.AddDays(-7);
+
+            var requestUri = endpoint + "/matches?competition_id=" + competitionId + "&from=" + daysToFetch.ToString("yyyy-MM-ddThh:mm:ss");
 
             //Calls the service and returns a json string
             string response = await client.GetStringAsync(requestUri);
@@ -69,6 +68,37 @@ namespace ScoresDemo
             }
 
             return matchList;
+        }
+
+        public static async Task<ObservableCollection<Competition>> GetCompetitions()
+        {
+            var client = new HttpClient();
+
+            //Header required to call the service (API key)
+            client.DefaultRequestHeaders.Add("x-crowdscores-api-key", "91e57182c3954dc68a2e184c30271b4a");
+
+            var requestUri = endpoint + "/competitions";
+
+            //Calls the service and returns a json string
+            string response = await client.GetStringAsync(requestUri);
+
+            //Converts json string into a ObservableCollection of strings
+            var jsonCmpetitionsList = JsonConvert.DeserializeObject<ObservableCollection<JObject>>(response);
+
+            //Build list of match objects based on json string
+            var competitionsList = new ObservableCollection<Competition>();
+            foreach (JObject competition in jsonCmpetitionsList)
+            {
+                var newCompetition = new Competition()
+                {
+                    Id = competition.Value<int>("dbid"),
+                    Name = competition.Value<string>("name")
+                };
+
+                competitionsList.Add(newCompetition);
+            }
+
+            return competitionsList;
         }
     }
 }
