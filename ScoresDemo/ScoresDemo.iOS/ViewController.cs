@@ -68,11 +68,15 @@ namespace ScoresDemo.iOS
 	    public UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
 	    {
             // request a recycled cell to save memory
-            UITableViewCell cell = tableView.DequeueReusableCell("cellxpto");
+            MatchTableViewCell cell = tableView.DequeueReusableCell("MatchCell") as MatchTableViewCell;
             // if there are no cells to reuse, create a new one
-            if (cell == null)
-                cell = new UITableViewCell(UITableViewCellStyle.Default, "cellxpto");
-            cell.TextLabel.Text = matchesCollection[indexPath.Row].HomeName;
+            if (cell == null) { 
+                cell = new MatchTableViewCell();
+            }
+            cell.HomeNameProp.Text = matchesCollection[indexPath.Row].HomeName;
+            cell.AwayNameProp.Text = matchesCollection[indexPath.Row].AwayName;
+            cell.HomeGoalsProp.Text = matchesCollection[indexPath.Row].HomeGoals.ToString();
+            cell.AwayGoalsProp.Text = matchesCollection[indexPath.Row].AwayGoals.ToString();
             return cell;
         }
 	}
