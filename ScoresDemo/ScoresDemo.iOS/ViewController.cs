@@ -8,7 +8,7 @@ namespace ScoresDemo.iOS
 {
 	public partial class ViewController : UIViewController, IUITableViewDataSource//, IUITableViewDelegate
 	{
-	    private ObservableCollection<Match> matchesCollection;
+	    private Match[] matchesArray;
 
         public ViewController (IntPtr handle) : base (handle)
 		{
@@ -41,26 +41,23 @@ namespace ScoresDemo.iOS
         {
             //Get current selected meme from the ViewPicker
             var rowSel = CompetitionPicker.SelectedRowInComponent(new nint(0));
-            var competionIdString = (CompetitionPicker.Model as CompetitionsPickerViewModel).GetId(rowSel);
+            var competitionIdString = (CompetitionPicker.Model as CompetitionsPickerViewModel).GetId(rowSel);
 
-            //Calls the Shared Portable Class Library with the values of the PickerView and TextFields’s in this View.
-            //The returned value is the image in a byte array format 
-            matchesCollection = await ScoresSource.GetLastCompetitionMatches(competionIdString);
-            //Create image
-            //var img = new UIImage(NSData.FromArray(imageByteArr));
+            //Calls the PCL with the chosen competition Id to get the matches List
+            var matchesCollection = await ScoresSource.GetLastCompetitionMatches(competitionIdString);
 
+            //Order the matches by date
+            matchesArray = matchesCollection.OrderByDescending(m => m.StartTime).ToArray();
 
+            //Reload the tableview
             MatchesTable.ReloadData();
-
-            ////Set image to the Image Placeholder we have on our View
-            //MemeImageView.Image = img;
         }
 
 	    public nint RowsInSection(UITableView tableView, nint section)
 	    {
-	        if (matchesCollection != null)
+	        if (matchesArray != null)
 	        {
-	            return matchesCollection.Count;
+	            return matchesArray.Length;
 	        }
 	        return 0;
 	    }
@@ -69,14 +66,16 @@ namespace ScoresDemo.iOS
 	    {
             // request a recycled cell to save memory
             MatchTableViewCell cell = tableView.DequeueReusableCell("MatchCell") as MatchTableViewCell;
+
             // if there are no cells to reuse, create a new one
             if (cell == null) { 
                 cell = new MatchTableViewCell();
             }
-            cell.HomeNameProp.Text = matchesCollection[indexPath.Row].HomeName;
-            cell.AwayNameProp.Text = matchesCollection[indexPath.Row].AwayName;
-            cell.HomeGoalsProp.Text = matchesCollection[indexPath.Row].HomeGoals.ToString();
-            cell.AwayGoalsProp.Text = matchesCollection[indexPath.Row].AwayGoals.ToString();
+
+            cell.HomeNameProp.Text = matchesArray[indexPath.Row].HomeName;
+            cell.AwayNameProp.Text = matchesArray[indexPath.Row].AwayName;
+            cell.HomeGoalsProp.Text = matchesArray[indexPath.Row].HomeGoals.ToString();
+            cell.AwayGoalsProp.Text = matchesArray[indexPath.Row].AwayGoals.ToString();
             return cell;
         }
 	}
