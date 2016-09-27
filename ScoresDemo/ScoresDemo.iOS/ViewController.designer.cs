@@ -1,51 +1,45 @@
-﻿// WARNING
+// WARNING
 //
-// This file has been generated automatically by Xamarin Studio from the outlets and
-// actions declared in your storyboard file.
-// Manual changes to this file will not be maintained.
+// This file has been generated automatically by Xamarin Studio to store outlets and
+// actions made in the UI designer. If it is removed, they will be lost.
+// Manual changes to this file may not be handled correctly.
 //
 using Foundation;
-using System;
 using System.CodeDom.Compiler;
-using UIKit;
 
 namespace ScoresDemo.iOS
 {
-    [Register ("ViewController")]
-    partial class ViewController
-    {
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIPickerView CompetitionPicker { get; set; }
+	[Register ("ViewController")]
+	partial class ViewController
+	{
+		[Outlet]
+		UIKit.UIPickerView CompetitionPicker { get; set; }
 
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton FetchMatchesButton { get; set; }
+		[Outlet]
+		UIKit.UIButton FetchMatchesButton { get; set; }
 
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITableView MatchesTable { get; set; }
+		[Outlet]
+		UIKit.UITableView MatchesTable { get; set; }
 
-        [Action ("FetchMatchesButton_TouchUpInside:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void FetchMatchesButton_TouchUpInside (UIKit.UIButton sender);
+		[Action ("FetchMatchesButton_TouchUpInside:")]
+		partial void FetchMatchesButton_TouchUpInside (UIKit.UIButton sender);
+		
+		void ReleaseDesignerOutlets ()
+		{
+			if (CompetitionPicker != null) {
+				CompetitionPicker.Dispose ();
+				CompetitionPicker = null;
+			}
 
-        void ReleaseDesignerOutlets ()
-        {
-            if (CompetitionPicker != null) {
-                CompetitionPicker.Dispose ();
-                CompetitionPicker = null;
-            }
+			if (FetchMatchesButton != null) {
+				FetchMatchesButton.Dispose ();
+				FetchMatchesButton = null;
+			}
 
-            if (FetchMatchesButton != null) {
-                FetchMatchesButton.Dispose ();
-                FetchMatchesButton = null;
-            }
-
-            if (MatchesTable != null) {
-                MatchesTable.Dispose ();
-                MatchesTable = null;
-            }
-        }
-    }
+			if (MatchesTable != null) {
+				MatchesTable.Dispose ();
+				MatchesTable = null;
+			}
+		}
+	}
 }

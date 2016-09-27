@@ -70,6 +70,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ScoresDemo\ScoresDemo.csproj">
       <Name>ScoresDemo</Name>
+      <Project>{FD5AE2AE-85EF-42E4-AA8E-00C2AE503A52}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +145,10 @@
     <Compile Include="ViewController.cs" />
     <Compile Include="ViewController.designer.cs">
       <DependentUpon>ViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MatchTableViewCell.cs" />
+    <Compile Include="MatchTableViewCell.designer.cs">
+      <DependentUpon>MatchTableViewCell.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
