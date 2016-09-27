@@ -1,24 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Text;
-
 using Android.App;
-using Android.Content;
-using Android.Content.Res;
-using Android.Graphics;
-using Android.OS;
-using Android.Runtime;
 using Android.Views;
-using Android.Webkit;
 using Android.Widget;
-using Java.Net;
-using XamSvg;
-using System.Net.Http;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace ScoresDemo.Droid
 {
@@ -47,7 +29,7 @@ namespace ScoresDemo.Droid
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
             var item = competitions[position];
-            View view = context.LayoutInflater.Inflate(Resource.Layout.CompetitionSpinnerItem, null);
+            View view = context.LayoutInflater.Inflate(Resource.Layout.CompetitionSpinnerItem, null); //we are not reusing the convertView but should on a real app
 
             view.FindViewById<TextView>(Resource.Id.textName).Text = item.Name;
             view.FindViewById<TextView>(Resource.Id.textRegion).Text = item.RegionName;

@@ -1,23 +1,11 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Net;
-using System.Text;
-
 using Android.App;
-using Android.Content;
-using Android.Content.Res;
 using Android.Graphics;
-using Android.OS;
-using Android.Runtime;
 using Android.Views;
-using Android.Webkit;
 using Android.Widget;
-using Java.Net;
 using XamSvg;
 using System.Net.Http;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace ScoresDemo.Droid
@@ -47,7 +35,7 @@ namespace ScoresDemo.Droid
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
             var item = matches[position];
-            View view = context.LayoutInflater.Inflate(Resource.Layout.MatchListItem, null);
+            View view = context.LayoutInflater.Inflate(Resource.Layout.MatchListItem, null); //we are not reusing the convertView but should on a real app
 
             view.FindViewById<TextView>(Resource.Id.homeName).Text = item.HomeName;
             view.FindViewById<TextView>(Resource.Id.awayName).Text = item.AwayName;
@@ -70,6 +58,7 @@ namespace ScoresDemo.Droid
             return view;
         }
 
+        //Inefficient way to get svg image to bitmap during list loading (Do not use, just for demo purposes)
         private async void LoadSvg(string svgUrl, ImageView awayImage)
         {
             try
@@ -83,6 +72,7 @@ namespace ScoresDemo.Droid
             }
         }
 
+        //Load svg string from url
         private async Task<Bitmap> LoadSvgString(string svgUrl)
         {
             using (var client = new HttpClient())
@@ -91,7 +81,7 @@ namespace ScoresDemo.Droid
                 var result = await client.GetAsync(svgUrl);
                 var svgString = await result.Content.ReadAsStringAsync();
 
-                var image = SvgFactory.GetBitmap(new StringReader(svgString), 100, 100);
+                var image = SvgFactory.GetBitmap(new StringReader(svgString), 50, 50);
                 return image;
             }
         }
