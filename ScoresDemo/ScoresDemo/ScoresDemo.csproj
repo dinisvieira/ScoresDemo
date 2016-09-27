@@ -31,8 +31,8 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Competition.cs" />
-    <Compile Include="Match.cs" />
+    <Compile Include="Models\Competition.cs" />
+    <Compile Include="Models\Match.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScoresSource.cs" />
   </ItemGroup>
