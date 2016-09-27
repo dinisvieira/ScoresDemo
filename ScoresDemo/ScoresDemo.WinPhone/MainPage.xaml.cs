@@ -1,20 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
 
 namespace ScoresDemo.WinPhone
 {
@@ -23,8 +10,6 @@ namespace ScoresDemo.WinPhone
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        int count = 1;
-
         public MainPage()
         {
             this.InitializeComponent();
@@ -39,21 +24,25 @@ namespace ScoresDemo.WinPhone
         /// This parameter is typically used to configure the page.</param>
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            //Calls the Shared Portable Class Library to get a list with all available meme's.
+            //Calls the Shared Portable Class Library to get a list with all available competitions.
             ObservableCollection<Competition> competitions = await ScoresSource.GetCompetitions();
 
+            //order the competitions by id
             var orderedCompetitions = competitions.OrderBy(m => m.Id);
 
+            //set the Competitions Combox Box Items source to the list
             CompetitionsComboBox.ItemsSource = orderedCompetitions;
 
+            //Create the tapped event for the Fetch Matches Button
             FetchMatchesButton.Tapped += async (sender, args) =>
             {
-
+                //get the selected competition in the combobox
                 var selComp = CompetitionsComboBox.SelectedValue as Competition;
 
+                //get the matches for the selected competition
                 var matches = await ScoresSource.GetLastCompetitionMatches(selComp.Id.ToString());
-                System.Diagnostics.Debug.WriteLine(matches.Count);
 
+                //Order the matches by date
                 var orderedMatches = matches.OrderByDescending(m => m.StartTime);
 
                 MatchesListView.ItemsSource = orderedMatches;
