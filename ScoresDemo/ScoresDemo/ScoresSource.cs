@@ -97,7 +97,6 @@ namespace ScoresDemo
                 {
                     Id = competition.Value<int>("dbid"),
                     Name = competition.Value<string>("name"),
-                    ImgUrl = competition.Value<string>("flagUrl"),
                     RegionName = regionToken.Value<string>("name")
                 };
                 competitionsList.Add(newCompetition);
