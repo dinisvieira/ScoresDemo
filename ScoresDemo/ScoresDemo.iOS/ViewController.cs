@@ -6,7 +6,7 @@ using UIKit;
 
 namespace ScoresDemo.iOS
 {
-	public partial class ViewController : UIViewController, IUITableViewDataSource//, IUITableViewDelegate
+	public partial class ViewController : UIViewController, IUITableViewDataSource
 	{
 	    private Match[] matchesArray;
 
@@ -27,7 +27,6 @@ namespace ScoresDemo.iOS
             //Set the list of competitions we got to our PickerView (using the pickerViewModel we created)
             CompetitionPicker.Model = new CompetitionsPickerViewModel(orderedCompetitionsArr);
 
-            //MatchesTable.Delegate = this;
             MatchesTable.DataSource = this;
 		}
 
@@ -68,9 +67,7 @@ namespace ScoresDemo.iOS
             MatchTableViewCell cell = tableView.DequeueReusableCell("MatchCell") as MatchTableViewCell;
 
             // if there are no cells to reuse, create a new one
-            if (cell == null) { 
-                cell = new MatchTableViewCell();
-            }
+            if (cell == null) { cell = new MatchTableViewCell(); }
 
             cell.HomeNameProp.Text = matchesArray[indexPath.Row].HomeName;
             cell.AwayNameProp.Text = matchesArray[indexPath.Row].AwayName;
