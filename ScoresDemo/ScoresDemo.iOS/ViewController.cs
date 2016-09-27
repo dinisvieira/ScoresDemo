@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using Foundation;
 using UIKit;
 
@@ -18,10 +19,13 @@ namespace ScoresDemo.iOS
 			base.ViewDidLoad ();
 
             //Calls the Shared Portable Class Library to get a list with all available competitions.
-            ObservableCollection<Competition> memes = await ScoresSource.GetCompetitions();
+            ObservableCollection<Competition> competitions = await ScoresSource.GetCompetitions();
+
+            //order the competitions by id
+            var orderedCompetitionsArr = competitions.OrderBy(m => m.Id).ToArray();
 
             //Set the list of competitions we got to our PickerView (using the pickerViewModel we created)
-            CompetitionPicker.Model = new CompetitionsPickerViewModel(memes);
+            CompetitionPicker.Model = new CompetitionsPickerViewModel(orderedCompetitionsArr);
 
             //MatchesTable.Delegate = this;
             MatchesTable.DataSource = this;
@@ -44,6 +48,9 @@ namespace ScoresDemo.iOS
             matchesCollection = await ScoresSource.GetLastCompetitionMatches(competionIdString);
             //Create image
             //var img = new UIImage(NSData.FromArray(imageByteArr));
+
+
+            MatchesTable.ReloadData();
 
             ////Set image to the Image Placeholder we have on our View
             //MemeImageView.Image = img;
@@ -75,10 +82,9 @@ namespace ScoresDemo.iOS
 
         private Competition[] _compArr;
 
-        public CompetitionsPickerViewModel(ObservableCollection<Competition> competitions)
+        public CompetitionsPickerViewModel(Competition[] competitions)
         {
-            _compArr = new Competition[competitions.Count];
-            competitions.CopyTo(_compArr, 0);
+            _compArr = competitions;
         }
 
         public string GetId(nint row)
