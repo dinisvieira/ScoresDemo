@@ -46,23 +46,29 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="42" id="43">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="49" misplaced="YES">
-                                                    <rect key="frame" x="18" y="11" width="42" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="49">
+                                                    <rect key="frame" x="18" y="11.5" width="140" height="20.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="140" id="kjQ-uQ-AR8"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50" misplaced="YES">
-                                                    <rect key="frame" x="315" y="11" width="42" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50">
+                                                    <rect key="frame" x="217" y="11.5" width="140" height="20.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="140" id="JpO-wr-FqK"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" text="3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="51" misplaced="YES">
-                                                    <rect key="frame" x="160" y="11" width="20" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="51">
+                                                    <rect key="frame" x="165" y="11.5" width="20" height="20.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="20" id="K36-EL-7Tr"/>
                                                     </constraints>
@@ -70,8 +76,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="52" misplaced="YES">
-                                                    <rect key="frame" x="195" y="11" width="20" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="52">
+                                                    <rect key="frame" x="190" y="11.5" width="20" height="20.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="20" id="OB5-8G-ZOQ"/>
                                                     </constraints>
@@ -79,8 +85,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53" misplaced="YES">
-                                                    <rect key="frame" x="185" y="11" width="5" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53">
+                                                    <rect key="frame" x="185" y="11.5" width="5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -90,11 +96,11 @@
                                                 <constraint firstItem="50" firstAttribute="centerY" secondItem="43" secondAttribute="centerY" id="9bN-o9-LSz"/>
                                                 <constraint firstItem="52" firstAttribute="centerY" secondItem="43" secondAttribute="centerY" id="FiR-L1-WjI"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="50" secondAttribute="trailing" constant="10" id="TiC-7o-nAy"/>
-                                                <constraint firstItem="52" firstAttribute="leading" secondItem="53" secondAttribute="trailing" constant="5" id="YFE-LC-eXM"/>
+                                                <constraint firstItem="52" firstAttribute="leading" secondItem="53" secondAttribute="trailing" id="YFE-LC-eXM"/>
                                                 <constraint firstItem="49" firstAttribute="leading" secondItem="43" secondAttribute="leadingMargin" constant="10" id="aPO-vY-dYc"/>
                                                 <constraint firstItem="49" firstAttribute="centerY" secondItem="43" secondAttribute="centerY" id="c2E-I7-Rhz"/>
                                                 <constraint firstItem="51" firstAttribute="centerY" secondItem="43" secondAttribute="centerY" id="dcW-UE-S45"/>
-                                                <constraint firstItem="53" firstAttribute="leading" secondItem="51" secondAttribute="trailing" constant="5" id="t1Y-rW-Wvx"/>
+                                                <constraint firstItem="53" firstAttribute="leading" secondItem="51" secondAttribute="trailing" id="t1Y-rW-Wvx"/>
                                                 <constraint firstItem="53" firstAttribute="centerX" secondItem="43" secondAttribute="centerX" id="xq8-uG-eiz"/>
                                                 <constraint firstItem="53" firstAttribute="centerY" secondItem="43" secondAttribute="centerY" id="z8Y-Xs-870"/>
                                             </constraints>
@@ -115,14 +121,13 @@
                                                     <include reference="52"/>
                                                     <include reference="53"/>
                                                 </mask>
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="AwayName" destination="49" id="name-outlet-49"/>
-                                            <outlet property="HomeName" destination="50" id="name-outlet-50"/>
-                                            <outlet property="HomeGoals" destination="52" id="name-outlet-52"/>
                                             <outlet property="AwayGoals" destination="51" id="name-outlet-51"/>
+                                            <outlet property="AwayName" destination="49" id="name-outlet-49"/>
+                                            <outlet property="HomeGoals" destination="52" id="name-outlet-52"/>
+                                            <outlet property="HomeName" destination="50" id="name-outlet-50"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -153,7 +158,4 @@
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
     </scenes>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedScreenMetrics key="destination" type="retina47"/>
-    </simulatedMetricsContainer>
 </document>
