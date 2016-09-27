@@ -111,14 +111,14 @@ namespace ScoresDemo.Droid
 			// aapt resource value: 0x7f050008
 			public const int homeName = 2131034120;
 			
-			// aapt resource value: 0x7f050000
-			public const int image = 2131034112;
-			
 			// aapt resource value: 0x7f050004
 			public const int matchesListView = 2131034116;
 			
 			// aapt resource value: 0x7f050001
-			public const int text = 2131034113;
+			public const int textName = 2131034113;
+			
+			// aapt resource value: 0x7f050000
+			public const int textRegion = 2131034112;
 			
 			// aapt resource value: 0x7f05000d
 			public const int venueName = 2131034125;

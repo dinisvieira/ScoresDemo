@@ -72,8 +72,15 @@ namespace ScoresDemo.Droid
 
         private async void LoadSvg(string svgUrl, ImageView awayImage)
         {
-            var awayBitmap = await LoadSvgString(svgUrl);
-            awayImage.SetImageBitmap(awayBitmap);
+            try
+            {
+                var awayBitmap = await LoadSvgString(svgUrl);
+                awayImage.SetImageBitmap(awayBitmap);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
         }
 
         private async Task<Bitmap> LoadSvgString(string svgUrl)

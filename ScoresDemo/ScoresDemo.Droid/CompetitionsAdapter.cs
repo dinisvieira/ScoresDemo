@@ -49,7 +49,8 @@ namespace ScoresDemo.Droid
             var item = competitions[position];
             View view = context.LayoutInflater.Inflate(Resource.Layout.CompetitionSpinnerItem, null);
 
-            view.FindViewById<TextView>(Resource.Id.text).Text = item.Name;
+            view.FindViewById<TextView>(Resource.Id.textName).Text = item.Name;
+            view.FindViewById<TextView>(Resource.Id.textRegion).Text = item.RegionName;
 
             return view;
         }

@@ -83,18 +83,23 @@ namespace ScoresDemo
             string response = await client.GetStringAsync(requestUri);
 
             //Converts json string into a ObservableCollection of strings
-            var jsonCmpetitionsList = JsonConvert.DeserializeObject<ObservableCollection<JObject>>(response);
+            var jsonCompetitionsList = JsonConvert.DeserializeObject<ObservableCollection<JObject>>(response);
 
             //Build list of match objects based on json string
             var competitionsList = new ObservableCollection<Competition>();
-            foreach (JObject competition in jsonCmpetitionsList)
+            foreach (JObject competition in jsonCompetitionsList)
             {
+
+                JToken regionToken;
+                competition.TryGetValue("region", out regionToken);
+
                 var newCompetition = new Competition()
                 {
                     Id = competition.Value<int>("dbid"),
-                    Name = competition.Value<string>("name")
+                    Name = competition.Value<string>("name"),
+                    ImgUrl = competition.Value<string>("flagUrl"),
+                    RegionName = regionToken.Value<string>("name")
                 };
-
                 competitionsList.Add(newCompetition);
             }
 
